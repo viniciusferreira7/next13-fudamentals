@@ -1,24 +1,26 @@
-'use client'
+import { AddToCarButton } from './addToCarButton'
+
 interface ProductProps {
   params: {
     product: string[]
   }
 }
 
-export default function Product({ params }: ProductProps) {
+export default async function Product({ params }: ProductProps) {
   const [id, size, color] = params.product
 
-  function handleAddToCar() {
-    const test = { 'Adicionado ao carrinho': 'test' }
-    console.log(test['Adicionado ao carrinho'])
-  }
+  await new Promise((resolve) => setTimeout(resolve, 2000))
+
+  const response = await fetch('https://api.github.com/users/viniciusferreira7')
+  const user = await response.json()
 
   return (
     <div>
       <p>Product: {id}</p>
       <p>Size: {size}</p>
       <p>Color: {color}</p>
-      <button onClick={handleAddToCar}>Adicionar ao carrinho</button>
+      <AddToCarButton />
+      <pre>{JSON.stringify(user, null, 2)}</pre>
     </div>
   )
 }
