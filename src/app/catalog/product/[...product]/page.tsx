@@ -1,4 +1,5 @@
-import { AddToCarButton } from './addToCarButton'
+import { AddToCarButton } from './add-to-car-button'
+import { Typography } from './typography'
 
 interface ProductProps {
   params: {
@@ -19,8 +20,10 @@ export default async function Product({ params }: ProductProps) {
       <p>Product: {id}</p>
       <p>Size: {size}</p>
       <p>Color: {color}</p>
-      <AddToCarButton />
       <pre>{JSON.stringify(user, null, 2)}</pre>
+      <AddToCarButton>
+        <Typography />
+      </AddToCarButton>
     </div>
   )
 }
